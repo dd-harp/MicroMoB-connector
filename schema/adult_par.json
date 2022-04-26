@@ -1,0 +1,85 @@
+{
+  "$ref": "#/definitions/AdultPar",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "AdultPar": {
+      "additionalProperties": false,
+      "description": "Parameters for the Ross-Macdonal adult mosquito model.",
+      "properties": {
+        "stochastic": {
+         "items": {
+            "type": "boolean"
+          },
+          "type": "array"
+        },
+        "f": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "q": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "eip": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "p": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "psi" : {
+          "items" : {
+            "type": "array"
+          },
+          "type": "array"
+        },
+        "nu" : {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "M": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "Y": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        },
+        "Z": {
+          "items": {
+            "type": "number"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "stochastic",
+        "f",
+        "q",
+        "eip",
+        "p",
+        "psi",
+        "nu",
+        "M",
+        "Y",
+        "Z"
+      ],
+      "type": "object"
+    }
+  }
+}
