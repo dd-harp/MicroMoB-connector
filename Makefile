@@ -12,6 +12,7 @@ release:
 .PHONY: run-local
 run-local:
 	mkdir -p input output
-	cp test/input.json input/input.json
-	./bin/run-model ./input/input.json ./output/data.json ./schema/input.json ./schema/output.json
-
+	cp test/config.json input/config.json
+	cp test/aqua_par.json input/aqua_par.json
+	cp test/adult_par.json input/adult_par.json
+	./bin/run-model ./input/config.json ./input/adult_par.json ./input/aqua_par.json ./output/data.json ./schema/config.json ./schema/adult_par.json ./schema/aqua_par.json ./schema/output.json
