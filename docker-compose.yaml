@@ -20,7 +20,9 @@ services:
       dockerfile: Dockerfile
       target: release
     volumes:
-      - ./test/input.json:/data/input/input.json:ro
+      - ./test/config.json:/data/input/config.json:ro
+      - ./test/adult_par.json:/data/input/adult_par.json:ro
+      - ./test/aqua_par.json:/data/input/aqua_par.json:ro
       - ./output:/data/output:rw
       - ./schema:/data/schema:ro
 
