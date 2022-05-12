@@ -1,0 +1,9 @@
+MicroMoB-BH-RM:
+  name: MicroMoB (Beverton-Holt Aquatic and Ross-Macdonald Adult Mosquitoes Only)
+  origin: dd-harp (Disease Dynamics - Health Analytics for Robust Policy)
+  enabled: true
+  imageURL: ghcr.io/dd-harp/MicroMoB-connector/MicroMoB-connector:latest
+  description: |
+    This is a simple aquatic and adult mosquito model that is spatiall defined
+    on a set of points and most parameters are allowed to vary over space and
+    time.
