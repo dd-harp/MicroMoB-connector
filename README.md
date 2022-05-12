@@ -62,3 +62,27 @@ input <- list(
 jsonlite::write_json(x = input, path = "test/input.json",digits=17,pretty=TRUE)
 jsonvalidate::json_validate(json = "test/input.json", schema = "schema/input-MicroMoB.json")
 ```
+
+You can read in and plot the output in R to check everything is working correctly with:
+
+```R
+library(data.table)
+library(ggplot2)
+
+output <- jsonlite::read_json(path = "output/data.json", simplifyVector = TRUE)
+
+MYZ <- as.data.table(output$MYZ)
+data.table::setnames(x = MYZ, old = c("V1", "V2", "V3"), new = c("Patch", "Day", "Stage"))
+
+MYZ[,
+    Stage := fcase(
+      Stage == 1, "M",
+      Stage == 2, "Y",
+      Stage == 3, "Z"
+    )]
+
+ggplot(data = MYZ) +
+  geom_line(aes(x = Day, y = value, group = Patch), alpha = 0.25) +
+  facet_wrap(. ~ Stage, scales = "free") +
+  theme_bw()
+```

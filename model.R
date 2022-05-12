@@ -14,8 +14,8 @@ if(length(ARGS)>1){
 } else {
   model_input_fn = "test/input.json"
   model_output_fn = "output/data.json"
-  model_input_schema_fn = "schema/input-MicroMoB.json"
-  model_output_schema_fn = "schema/output-MicroMoB.json"
+  model_input_schema_fn = "schema/input.json"
+  model_output_schema_fn = "schema/output.json"
 }
 
 
