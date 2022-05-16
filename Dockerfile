@@ -24,7 +24,7 @@ RUN Rscript --vanilla app/install.R
 # Do this here so that we don't have to run the tests when building a release.
 FROM build AS release
 
-ENTRYPOINT ["/app/bin/run-model", "/data/input/input.json", "/data/output/data.json", "/data/schema/input.json", "/data/schema/output.json"]
+ENTRYPOINT ["/app/bin/run-model", "/data/input/input.json", "/data/output/data.json", "/app/schema/input.json", "/app/schema/output.json"]
 
 ####################################################################
 FROM build AS test

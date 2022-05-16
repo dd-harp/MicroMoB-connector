@@ -22,4 +22,3 @@ services:
     volumes:
       - ./test/input.json:/data/input/input.json:ro
       - ./output:/data/output:rw
-      - ./schema:/data/schema:ro
