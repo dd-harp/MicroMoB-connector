@@ -4,6 +4,6 @@ MicroMoB-BH-RM:
   enabled: true
   imageURL: ghcr.io/dd-harp/MicroMoB-connector/MicroMoB-connector:latest
   description: |
-    This is a simple aquatic and adult mosquito model that is spatiall defined
-    on a set of points and most parameters are allowed to vary over space and
-    time.
+    This is a simple aquatic and adult mosquito model that is defined
+    on a set of points in space and most parameters are allowed to vary over 
+    space and time.
