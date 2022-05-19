@@ -7,8 +7,8 @@ dynamics for use in the Model Runner.
 The sample parameters were made with:
 
 ```R
-p <- 20
-tmax <- 1095
+p <- 2
+tmax <- 365
 
 surv_a <- 0.9
 
@@ -60,7 +60,7 @@ input <- list(
 )
 
 jsonlite::write_json(x = input, path = "test/input.json",digits=17,pretty=TRUE)
-jsonvalidate::json_validate(json = "test/input.json", schema = "schema/input-MicroMoB.json")
+jsonvalidate::json_validate(json = "test/input.json", schema = "schema/MicroMoB.json")
 ```
 
 You can read in and plot the output in R to check everything is working correctly with:
@@ -82,7 +82,12 @@ MYZ[,
     )]
 
 ggplot(data = MYZ) +
-  geom_line(aes(x = Day, y = value, group = Patch), alpha = 0.25) +
+  geom_line(aes(x = Day, y = value, group = Patch), alpha = 0.75) +
   facet_wrap(. ~ Stage, scales = "free") +
   theme_bw()
 ```
+
+You should see output which resembles the following plot, although if you used stochastic
+model(s) there will be sampling variation.
+
+![](figs/output.png)
