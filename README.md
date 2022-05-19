@@ -60,7 +60,7 @@ input <- list(
 )
 
 jsonlite::write_json(x = input, path = "test/input.json",digits=17,pretty=TRUE)
-jsonvalidate::json_validate(json = "test/input.json", schema = "schema/MicroMoB.json")
+jsonvalidate::json_validate(json = "test/input.json", schema = "schema/input.json")
 ```
 
 You can read in and plot the output in R to check everything is working correctly with:
