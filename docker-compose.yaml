@@ -20,5 +20,5 @@ services:
       dockerfile: Dockerfile
       target: release
     volumes:
-      - ./test/input.json:/data/input/input.json:ro
+      - ./test/input.json:/data/input/inputFile.json:ro
       - ./output:/data/output:rw
