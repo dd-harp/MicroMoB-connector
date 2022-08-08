@@ -75,19 +75,25 @@ library(ggplot2)
 
 output <- jsonlite::read_json(path = "output/data.json", simplifyVector = TRUE)
 
-MYZ <- as.data.table(output$MYZ)
-data.table::setnames(x = MYZ, old = c("V1", "V2", "V3"), new = c("Patch", "Day", "Stage"))
-
-MYZ[,
-    Stage := fcase(
-      Stage == 1, "M",
-      Stage == 2, "Y",
-      Stage == 3, "Z"
-    )]
+MYZ <- NULL
+for (i in 1:length(output$output$MYZ)) {
+  
+  MYZ_i <- as.data.table(output$output$MYZ[[i]])
+  data.table::setnames(x = MYZ_i, old = c("V1", "V2", "V3"), new = c("Patch", "Day", "Stage"))
+  
+  MYZ_i[,
+      Stage := fcase(
+        Stage == 1, "M",
+        Stage == 2, "Y",
+        Stage == 3, "Z"
+      )]
+  MYZ_i[, 'run' := as.integer(i)]
+  MYZ <- rbind(MYZ, MYZ_i)
+}
 
 ggplot(data = MYZ) +
-  geom_line(aes(x = Day, y = value, group = Patch), alpha = 0.75) +
-  facet_wrap(. ~ Stage, scales = "free") +
+  geom_line(aes(x = Day, y = value, group = run), alpha = 0.75) +
+  facet_wrap(Patch ~ Stage, scales = "free") +
   theme_bw()
 ```
 

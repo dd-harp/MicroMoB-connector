@@ -1,10 +1,11 @@
-import { MicroMoB_BH_RM_Input } from './input-MicroMoB'
+import { MicroMoBBHRMInput } from './input-MicroMoB'
 
 /**
- * @title Minimal Model Output
+ * @title Output from MicroMoB model with Beverton-Holt aquatic mosquito model and 
+ * Ross-Macdonald adult mosquito model.
  */
-export interface MicroMoB_BH_RM_Output {
-  metadata: MicroMoB_BH_RM_Input
+export interface MicroMoBBHRMOutput {
+  metadata: MicroMoBBHRMInput
   /**
    * Vector of times at which the model is run
    */
@@ -13,4 +14,12 @@ export interface MicroMoB_BH_RM_Output {
    * Array (patches, days, MYZ)
    */
   MYZ: number[][][]
+}
+
+/**
+ * @title Batch output from MicroMoB model with Beverton-Holt aquatic mosquito model and 
+ * Ross-Macdonald adult mosquito model.
+ */
+export interface MicroMoBBHRMOutputBatch {
+  output: MicroMoBBHRMOutput | MicroMoBBHRMOutput[]
 }
