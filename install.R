@@ -4,4 +4,4 @@ pkgs <- c(
   "jsonlite",
   "jsonvalidate"
 )
-install.packages(pkgs, dependencies=TRUE, clean=TRUE,repos = 'https://cran.microsoft.com/snapshot/2022-04-28/')
+install.packages(pkgs, dependencies=TRUE, clean=TRUE,repos = 'https://cran.microsoft.com/snapshot/2022-07-26/')
