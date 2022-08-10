@@ -61,9 +61,7 @@ input <- replicate(n = 3, expr = {
     )
 }, simplify = FALSE)
 
-input_object <- list("input" = input)
-
-jsonlite::write_json(x = input_object, path = "test/input.json",digits=17,pretty=TRUE)
+jsonlite::write_json(x = input, path = "test/input.json",digits=17,pretty=TRUE)
 jsonvalidate::json_validate(json = "test/input.json", schema = "schema/input.json")
 ```
 

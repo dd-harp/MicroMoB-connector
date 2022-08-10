@@ -19,17 +19,20 @@ if(length(ARGS)>1){
 }
 
 
-model_input <- read_json(model_input_fn, simplifyVector = TRUE)
+model_input <- jsonlite::read_json(model_input_fn, simplifyVector = TRUE, simplifyDataFrame = FALSE)
 
-num_simulations <- nrow(model_input[["input"]])
-model_output <- list("output"=list())
+if (inherits(model_input[[1]], 'integer')) {
+  model_input <- list(model_input)
+}
+
+num_simulations <- length(model_input)
+model_output <- vector(mode = 'list', length = num_simulations)
 
 # run simulations (can this be parallelized? or should the user-written bits always be executed in serial?)
 for (i in 1:num_simulations) {
   
-  input <- model_input$input[i, ]
-  input <- lapply(input, function(x) {x[[1]]})
-  
+  input <- model_input[[i]]
+
   # create model object
   mod <- MicroMoB::make_MicroMoB(tmax = input$tmax, p = input$p)
   
@@ -72,7 +75,7 @@ for (i in 1:num_simulations) {
   
   # Extract outputs and validate
   output = list(metadata = input, t = seq(from = 1, to = input$tmax[[1]] + 1), MYZ = output)
-  model_output[["output"]][[i]] <- output
+  model_output[[i]] <- output
   
 }
 
